@@ -16,27 +16,10 @@ class Core
 
     public function __construct()
     {
-        
-        if (isset($_GET['url'])) {
-
-            // Haal de forward-slash vooraan de url eraf
-            $url = rtrim($_GET['url'], '/');
-
-            // Maak de url schoon van html-tags, double-quotes, enz...
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-
-            // 
-            Zet de string gescheiden door een / in een array
-            $url = explode('/', $url);
-
-        } else {
-
-            /**
-             * Wanneer er niets achter de vhost-naam wordt gezet
-             * dan wordt het onderstaande array in $url gezet
-             */
-            $url = array('homepages', 'index');
-        }
+        /**
+         * Roep de functie getURL() aan om de url in een array te zetten
+         */
+        $url = $this->getURL();
         
         /**
          * Check of de controllerclass bestaat
@@ -91,5 +74,30 @@ class Core
          * Roep de method met alle parameters aan van de class 
          */
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+    }
+
+
+    public function getURL()
+    {
+        if (isset($_GET['url'])) {
+
+            // Haal de forward-slash vooraan de url eraf
+            $url = rtrim($_GET['url'], '/');
+
+            // Maak de url schoon van html-tags, double-quotes, enz...
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+
+            // Zet de string gescheiden door een / in een array
+            $url = explode('/', $url);
+
+        } else {
+
+            /**
+             * Wanneer er niets achter de vhost-naam wordt gezet
+             * dan wordt het onderstaande array in $url gezet
+             */
+            $url = array('homepages', 'index');
+        }
+        return $url;
     }
 }
