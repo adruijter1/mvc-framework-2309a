@@ -5,11 +5,12 @@
  */
 class Core 
 {
+    // In de $currentController stoppen we de naam van de controller
+    protected $currentController = 'Homepages';
 
     public function __construct()
     {
-        echo 'Arjan de Ruijter<br>';
-
+        
         if (isset($_GET['url'])) {
 
             // Haal de forward-slash vooraan de url eraf
@@ -18,7 +19,8 @@ class Core
             // Maak de url schoon van html-tags, double-quotes, enz...
             $url = filter_var($url, FILTER_SANITIZE_URL);
 
-            // Zet de string gescheiden door een / in een array
+            // 
+            Zet de string gescheiden door een / in een array
             $url = explode('/', $url);
 
         } else {
@@ -27,8 +29,24 @@ class Core
              * Wanneer er niets achter de vhost-naam wordt gezet
              * dan wordt het onderstaande array in $url gezet
              */
-            $url = array('homepage', 'index');
+            $url = array('homepages', 'index');
         }
-        var_dump($url);
+        
+        /**
+         * Check of de controllerclass bestaat
+         */
+        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+
+            /**
+             * Stop de naam van de controller in $this->currentController
+             */
+            $this->currentController = ucwords($url[0]);
+
+            /**
+             * Haal de naam van de controller uit het $url array
+             */
+            unset($url[0]);
+        }
+        
     }
 }
