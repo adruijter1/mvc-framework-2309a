@@ -18,6 +18,5 @@ class Homepages extends BaseController
          * aangeroepen met de informatie uit het $data-array
          */
         $this->view('homepages/index', $data);
-
     }
 }
