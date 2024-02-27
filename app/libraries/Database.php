@@ -1,0 +1,39 @@
+<?php
+/**
+ * Dit is de database class die alle communicatie met de database verzorgt
+ */
+
+class Database
+{
+    private $dbHost = DB_HOST;
+    private $dbName = DB_NAME;
+    private $dbUser = DB_USER;
+    private $dbPass = DB_PASS;
+
+
+    private $dbHandler;
+
+    public function __construct()
+    {
+        /**
+         * Dit is de connectiestring die nodig voor het maken van een
+         * nieuw PDO object
+         */
+        $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
+
+        /**
+         * We geven nog wat options mee voor het PDO-object om 
+         * fouten weer te geven
+         */
+        $options = array(
+            PDO::ATTR_PERSISTENT =>true,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false
+        );
+
+
+        $this->dbHandler = new PDO($conn, $this->dbUser, $this->dbPass, $options);
+
+
+    }
+}
