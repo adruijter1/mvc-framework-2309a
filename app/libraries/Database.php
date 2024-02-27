@@ -12,6 +12,7 @@ class Database
 
 
     private $dbHandler;
+    private $statement;
 
     public function __construct()
     {
@@ -43,5 +44,16 @@ class Database
              */
             echo $e->getMessage();
         }
+    }
+
+    public function query($sql)
+    {
+        $this->statement = $this->dbHandler->prepare($sql);
+    }
+
+    public function resultSet()
+    {
+        $this->statement->execute();
+        return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 }
