@@ -31,9 +31,17 @@ class Database
             PDO::ATTR_EMULATE_PREPARES => false
         );
 
-
-        $this->dbHandler = new PDO($conn, $this->dbUser, $this->dbPass, $options);
-
-
+        try {
+            /**
+             * Maken we eenverbinding met de database mysql server
+             */
+            $this->dbHandler = new PDO($conn, $this->dbUser, $this->dbPass, $options);
+        } catch (PDOException $e) {
+            /**
+             * Wanneer er een error optreed daarbij wordt er een PDOException object 
+             * aangemaakt met informatie over de error
+             */
+            echo $e->getMessage();
+        }
     }
 }
