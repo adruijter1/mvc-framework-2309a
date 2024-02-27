@@ -2,6 +2,15 @@
 
 class BaseController
 {
+    /**
+     * Hier maken we een nieuw model object aan en geven deze 
+     * terug aan de controller
+     */
+    public function model($model)
+    {
+        require_once APPROOT . '/models/' . $model . '.php';
+        return new $model();
+    }
 
     /**
      * De view method laadt het view-bestand en geeft informatie
