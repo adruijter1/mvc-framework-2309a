@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 27 feb 2024 om 10:52
+-- Gegenereerd op: 05 mrt 2024 om 09:18
 -- Serverversie: 8.0.32
 -- PHP-versie: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mvcframework-2309a`
 --
+CREATE DATABASE IF NOT EXISTS `mvcframework-2309a` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `mvcframework-2309a`;
 
 -- --------------------------------------------------------
 
