@@ -11,18 +11,10 @@ class Countries extends BaseController
 
     public function index()
     {
-        /**
-         * De controller roept de model aan om de landen op te halen
-         */
         $countries = $this->countryModel->getCountries();
-
-        // var_dump($countries);
 
         $dataRows = "";
 
-        /**
-         * Loop door de resultaten heen en maak een tabelrij voor elk land
-         */
         foreach ($countries as $country) {
             $dataRows .= "<tr>
                             <td>{$country->Name}</td>
@@ -32,17 +24,27 @@ class Countries extends BaseController
                         </tr>";
         }
 
-        /**
-         * Het array gevuld met informatie voor de view
-         */
         $data = [
             'title' => 'Landen van de Wereld',
             'dataRows' => $dataRows
         ];
 
-        /**
-         * De controller roept de view aan en geeft het $data-array mee
-         */
         $this->view('countries/index', $data);
+    }
+
+    /**
+     * Creates a new country.
+     *
+     * This method is responsible for rendering the create view and passing the necessary data to it.
+     *
+     * @return void
+     */
+    public function create()
+    {
+        $data = [
+            'title' => 'Nieuw land toevoegen'
+        ];
+
+        $this->view('countries/create', $data);
     }
 }
