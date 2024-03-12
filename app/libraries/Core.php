@@ -1,7 +1,7 @@
 <?php
 /**
  * De Core class is de ruggegraat en meest belangrijke
- * class van het mvc-framework
+ * class van het mvc-framework.
  */
 class Core 
 {
