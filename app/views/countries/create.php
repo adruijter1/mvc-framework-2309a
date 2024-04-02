@@ -18,14 +18,31 @@
     <div class="col-3">
     </div>
     <div class="col-6">
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Example label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-            </div>
+        <form action="<?= URLROOT; ?>/countries/create" method="post">
             <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Another label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-        </div>
+                <label for="inputNameCountry" class="form-label">Land:</label>
+                <input name="country" type="text" class="form-control" id="inputNameCountry" placeholder="Vul hier de naam van het land in">
+            </div>
+
+            <div class="mb-3">
+                <label for="inputNameCapitalCity" class="form-label">Hoofdstad:</label>
+                <input name="capitalCity" type="text" class="form-control" id="inputNameCapitalCity" placeholder="Vul hier de naam van de hoofdstad in">
+            </div>
+
+            <div class="mb-3">
+                <label for="inputNameContinent" class="form-label">Continent:</label>
+                <input name="continent" type="text" class="form-control" id="inputNameContinent" placeholder="Vul hier de naam van het continent in">
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPopulation" class="form-label">Aantal inwoners:</label>
+                <input name="population" type="text" class="form-control" id="inputPolulation" placeholder="Vul hier het aantal mensen in woonachtig in het land">
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">Sla op</button>
+            </div>
+        </form>
     </div>
     <div class="col-3">
     </div>
