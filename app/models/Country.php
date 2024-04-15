@@ -44,4 +44,35 @@ class Country
         }
     }
 
+    public function createCountry($postArrayData) 
+    {
+        /**
+         * Maak een sql-query die de ingevulde gegevens van het formulier
+         * wegschrijft naar de database
+         */
+        $sql = 'INSERT INTO Country (Name
+                                    ,CapitalCity
+                                    ,Continent
+                                    ,Population)
+                     VALUES     (:name
+                                ,:capitalcity
+                                ,:continent
+                                ,:population)';
+
+         /**
+         * Maak de query $sql gereed voor het PDO database-object
+         */
+        $this->db->query($sql);
+        
+        /**
+         * We koppelen de waardes uit het formulier aan de parameters in de query
+         */
+        $this->db->bind(':name', $postArrayData['country'], PDO::PARAM_STR);
+        $this->db->bind(':capitalcity', $postArrayData['capitalCity'], PDO::PARAM_STR);
+        $this->db->bind(':continent', $postArrayData['continent'], PDO::PARAM_STR);
+        $this->db->bind(':population', $postArrayData['population'], PDO::PARAM_INT);
+
+        return $this->db->execute();
+    }
+
 }

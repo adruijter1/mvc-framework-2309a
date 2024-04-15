@@ -42,8 +42,18 @@ class Countries extends BaseController
     public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Sanitize POST array
+            /**
+             * Maak het $_POST-array schoon van ongewenste tekens en tags
+             */
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            /**
+             * Roep de createCountry methode aan van het countryModel object waardoor
+             * de gegevens in de database worden opgeslagen
+             */
+            $result = $this->countryModel->createCountry($_POST);
+
+            var_dump($result);
 
             var_dump($_POST);
             exit();

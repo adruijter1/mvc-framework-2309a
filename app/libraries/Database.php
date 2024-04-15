@@ -56,4 +56,20 @@ class Database
         $this->statement->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+    /**
+     * Deze methode bind de waardes aan de parameters in de query
+     */
+    public function bind($parameter, $value, $type = null)
+    {
+        $this->statement->bindValue($parameter, $value, $type);
+    }
+
+    /**
+     * Deze methode voert de query uit
+     */
+    public function execute()
+    {
+        return $this->statement->execute();
+    }
 }
