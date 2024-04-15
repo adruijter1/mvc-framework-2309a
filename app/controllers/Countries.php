@@ -53,10 +53,14 @@ class Countries extends BaseController
              */
             $result = $this->countryModel->createCountry($_POST);
 
-            var_dump($result);
+            echo '<div class="alert alert-success" role="alert">
+                    Uw gegevens zijn opgeslagen. U wordt doorgestuurd naar de index-pagina.
+                  </div>';
 
-            var_dump($_POST);
-            exit();
+            /**
+             * Na het opslaan van de formulier wordt de gebruiker teruggeleid naar de index-pagina
+             */
+            header("Refresh:6; url=" . URLROOT . "/countries/index");
         }
 
         $data = [

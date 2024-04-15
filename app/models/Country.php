@@ -63,7 +63,7 @@ class Country
          * Maak de query $sql gereed voor het PDO database-object
          */
         $this->db->query($sql);
-        
+
         /**
          * We koppelen de waardes uit het formulier aan de parameters in de query
          */
@@ -72,6 +72,9 @@ class Country
         $this->db->bind(':continent', $postArrayData['continent'], PDO::PARAM_STR);
         $this->db->bind(':population', $postArrayData['population'], PDO::PARAM_INT);
 
+        /**
+         * Voer de query uit zodat de gegevens worden weggeschreven naar de database
+         */
         return $this->db->execute();
     }
 
