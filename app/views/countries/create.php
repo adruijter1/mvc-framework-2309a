@@ -1,7 +1,6 @@
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
 
 
-
 <!-- Maak een formulier om gegevens in de Country tabel te kunnen opslaan -->
 
 <div class="container">
