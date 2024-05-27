@@ -24,6 +24,7 @@
                         <th>Hoofdstad</th>
                         <th>Continent</th>
                         <th>Aantal Inwoners</th>
+                        <th>Wijzig</th>
                     </tr>
                 </thead>
                 <tbody>
