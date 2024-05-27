@@ -22,7 +22,7 @@ class Countries extends BaseController
                             <td>{$country->Continent}</td>
                             <td>" . number_format($country->Population, 0, ",", ".") . "</td>
                             <td>
-                                <a href='" . URLROOT . "/countries/update'>
+                                <a href='" . URLROOT . "/countries/update/{$country->Id}'>
                                     <i class='bi bi-pencil-square'></i>
                                 </a>
                             </td>            
@@ -75,10 +75,30 @@ class Countries extends BaseController
         $this->view('countries/create', $data);
     }
 
-    public function update()
+    public function update($countryId)
     {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $this->countryModel->updateCountry($_POST);
+
+            echo '<div class="alert alert-success" role="alert">
+                    Het land is gewijzigd. U wordt doorgestuurd naar de index-pagina.
+                </div>';
+                
+            header("Refresh:3; url=" . URLROOT . "/countries/index");
+        }
+
+        $result = $this->countryModel->getCountry($countryId);
+
         $data = [
-            'title' => 'Wijzig land'
+            'title' => 'Wijzig land',
+            'Id' => $result->Id,
+            'country' => $result->Name,
+            'capitalCity' => $result->CapitalCity,
+            'continent' => $result->Continent,
+            'population' => $result->Population
         ];
 
         $this->view('countries/update', $data);

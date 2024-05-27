@@ -14,26 +14,28 @@
             <div class="col-3">
             </div>
             <div class="col-6">
-                <form action="<?= URLROOT; ?>/countries/create" method="post">
+                <form action="<?= URLROOT; ?>/countries/update/<?= $data['Id']; ?>" method="post">
                     <div class="mb-3">
                         <label for="inputNameCountry" class="form-label">Land:</label>
-                        <input name="country" type="text" class="form-control" id="inputNameCountry" placeholder="Vul hier de naam van het land in">
+                        <input value="<?= $data['country']; ?>" name="country" type="text" class="form-control" id="inputNameCountry" placeholder="Vul hier de naam van het land in">
                     </div>
 
                     <div class="mb-3">
                         <label for="inputNameCapitalCity" class="form-label">Hoofdstad:</label>
-                        <input name="capitalCity" type="text" class="form-control" id="inputNameCapitalCity" placeholder="Vul hier de naam van de hoofdstad in">
+                        <input value="<?= $data['capitalCity']; ?>" name="capitalCity" type="text" class="form-control" id="inputNameCapitalCity" placeholder="Vul hier de naam van de hoofdstad in">
                     </div>
 
                     <div class="mb-3">
                         <label for="inputNameContinent" class="form-label">Continent:</label>
-                        <input name="continent" type="text" class="form-control" id="inputNameContinent" placeholder="Vul hier de naam van het continent in">
+                        <input value="<?= $data['continent']; ?>" name="continent" type="text" class="form-control" id="inputNameContinent" placeholder="Vul hier de naam van het continent in">
                     </div>
 
                     <div class="mb-3">
                         <label for="inputPopulation" class="form-label">Aantal inwoners:</label>
-                        <input name="population" type="text" class="form-control" id="inputPolulation" placeholder="Vul hier het aantal mensen in woonachtig in het land">
+                        <input value="<?= $data['population']; ?>" name="population" type="text" class="form-control" id="inputPolulation" placeholder="Vul hier het aantal mensen in woonachtig in het land">
                     </div>
+
+                    <input type="hidden" name="Id" value="<?= $data['Id']; ?>">
 
                     <div class="d-grid">
                         <button type="submit" class="btn btn-success">Sla op</button>

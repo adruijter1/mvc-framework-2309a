@@ -78,4 +78,41 @@ class Country
         return $this->db->execute();
     }
 
+    public function getCountry($countryId)
+    {
+        $sql = "SELECT Id
+                     ,Name
+                     ,CapitalCity
+                     ,Continent
+                     ,Population
+                FROM Country
+                WHERE Id = :id";
+
+        $this->db->query($sql);
+
+        $this->db->bind(':id', $countryId, PDO::PARAM_INT);
+
+        return $this->db->single();
+    }
+
+    public function updateCountry($postArrayData)
+    {
+        $sql = "UPDATE Country
+                   SET Name = :name
+                      ,CapitalCity = :capitalcity
+                      ,Continent = :continent
+                      ,Population = :population
+                 WHERE Id = :id";
+
+        $this->db->query($sql);
+
+        $this->db->bind(':name', $postArrayData['country'], PDO::PARAM_STR);
+        $this->db->bind(':capitalcity', $postArrayData['capitalCity'], PDO::PARAM_STR);
+        $this->db->bind(':continent', $postArrayData['continent'], PDO::PARAM_STR);
+        $this->db->bind(':population', $postArrayData['population'], PDO::PARAM_INT);
+        $this->db->bind(':id', $postArrayData['Id'], PDO::PARAM_INT);
+
+        return $this->db->execute();        
+    }
+
 }
