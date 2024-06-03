@@ -25,6 +25,7 @@
                         <th>Continent</th>
                         <th>Aantal Inwoners</th>
                         <th>Wijzig</th>
+                        <th>Verwijder</th>
                     </tr>
                 </thead>
                 <tbody>
