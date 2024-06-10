@@ -28,7 +28,8 @@ class Zangeres
                           ,Land
                           ,Mobiel
                           ,Leeftijd
-                    FROM   Zangeres';
+                    FROM   Zangeres
+                    ORDER BY Leeftijd DESC';
 
             /**
              * Prepare de query voor het PDO object
