@@ -58,3 +58,37 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `Zangeres`
+--
+
+DROP TABLE IF EXISTS `Zangeres`;
+CREATE TABLE IF NOT EXISTS `Zangeres` (
+  `Id` tinyint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Naam` varchar(100) NOT NULL,
+  `NettoWaarde` smallint NOT NULL,
+  `Land` varchar(100) NOT NULL,
+  `Mobiel` varchar(20) NOT NULL,
+  `Leeftijd` tinyint NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Zangeres`
+--
+
+INSERT INTO `Zangeres` (`Id`, `Naam`, `NettoWaarde`, `Land`, `Mobiel`, `Leeftijd`) VALUES
+(1, 'Rihanna', 1400, 'Barbados', '+1246240001862400', 36),
+(2, 'Madonna', 575, 'Verenigde Staten', '+1 3425 185876', 65),
+(3, 'Taylor', 570, 'Verenigde Staten', '+1 5876 236512', 34),
+(4, 'Beyoncé', 420, 'Verenigde Staten', '+1 6794908465', 42),
+(5, 'Jennifer Lopez', 400, 'Verenigde Staten', '+1 3131 857345', 54);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
